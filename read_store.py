@@ -67,20 +67,22 @@ class read_store:
             print("File Contain is")
             print(file_data)
             count_row = file_data.shape[0]
-            for j in range(count_row-2):
-                print(file_data["Object Name"].iloc[1])
-                abc = str(file_data["Object Name"].iloc[1])
+            print(count_row)
+            for j in range(count_row-1):
+                print(file_data["Object Name"].iloc[j+1])
+                abc = str(file_data["Object Name"].iloc[j+1])
                 object = abc.split(",")
                 local_cell_Id = object[1].split("=")
                 cell_Id = local_cell_Id[1]
                 print("printing cell_Id",cell_Id)
-                file_data_ = file_data.iloc[1]
-                file_data_json = json.loads(file_data_.to_json(orient='records'))
+                file_data_row = file_data.iloc[j+1]
+                file_data_json = json.loads(file_data_row.to_json(orient='records'))
                 data[cell_Id] = file_data_json
-                print("storing data in mongodb",data)
+                print("storing data in mongodb",file_data_json)
                 #store the data into DB
                 db_cm.remove()
                 db_cm.insert(data)
+            count_row=0
                 # inserting the as a dictionary where key is cell_d  and value is row : into the mongoDB
 
 
