@@ -38,7 +38,7 @@ class FileImpl(absFile):
         if file_name.find(".csv") > -1:
             return True
 
-    def parse_csv(fileNames):
+    def parse_csv(fileName):
         """
         """
         data = []
@@ -70,6 +70,6 @@ class FileImpl(absFile):
             
             #db_cm.remove()
             db_cm.update(data)
-            # inserting the as a dictionary where key is cell_d  and value is row : into the mongoDB
+            #storing as a dictionary where key is cell_d  and value is row : into the mongoDB
 
 
