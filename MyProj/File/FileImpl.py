@@ -67,7 +67,6 @@ class FileImpl(absFile):
         for i in range(len(fileNames)):
             print("Reading fileName...", fileNames[i])
             data = parse_csv(fileNames[i]
-            
             #db_cm.remove()
             db_cm.update(data)
             #storing as a dictionary where key is cell_d  and value is row : into the mongoDB
