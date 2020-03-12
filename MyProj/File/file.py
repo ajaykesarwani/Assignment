@@ -19,3 +19,8 @@ class FileOperation(object):
     @abc.abstractmethod
     def parse_csv(self, *params):
         pass
+
+    @abc.abstractmethod
+    def store_document(self,*params):
+        pass
+
