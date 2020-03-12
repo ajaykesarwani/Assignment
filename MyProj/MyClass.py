@@ -24,8 +24,11 @@ if __name__ == "__main__":
     filesObj = FileImpl(remotePath, localPath)
     fileObj.connect_remote_server()
     filesObj.download()
-    filenames = filesObj.read_all_filename()
-    db = MongoDB(uri,"mydb")
-    filesObj.insert_files(filenames)
     print "Download Successful"
 
+    filenames = filesObj.read_all_filename()
+    db = MongoDB(uri,"mydb")
+    print " Connection to MongoDB successful"
+    filesObj.store_document(filenames)
+    print " Data is successfully stored in DB"
+    
