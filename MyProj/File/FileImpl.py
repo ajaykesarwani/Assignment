@@ -1,4 +1,5 @@
 """
+
 """
 import shutil
 import pathlib
@@ -7,7 +8,8 @@ import csv
 import multiprocessing
 import threading
 from datetime import datetime
-from File.file import FileFileOperation as absFile
+from File.file import FileOperation as absFile
+from RS.SFTPConnectRS import SFTPConnectRS
 
 
 class FileImpl(absFile):
@@ -16,6 +18,7 @@ class FileImpl(absFile):
     def __init__(self, remotePath, localPath):
         self.remotePath = remotePath
         self.localPath = localPath
+        self.serverConnection = SFTPConnectRS(host, user, password, cnopts=None)
         
     def download(self):
         #Here only coping from one folder to other folder
@@ -41,7 +44,7 @@ class FileImpl(absFile):
     def parse_csv(fileName):
         """
         """
-        data = []
+        data = {}
         
         file_data = pd.read_csv(fileName)
         print("File Contain is")
@@ -61,14 +64,13 @@ class FileImpl(absFile):
                 
         return data
                 
-    def store_document(fileNames)
+    def store_document(fileNames):
         """
         """
         for i in range(len(fileNames)):
             print("Reading fileName...", fileNames[i])
-            data = parse_csv(fileNames[i]
+            data = parse_csv(fileNames[i])
             #db_cm.remove()
             db_cm.update(data)
             #storing as a dictionary where key is cell_d  and value is row : into the mongoDB
-
 
