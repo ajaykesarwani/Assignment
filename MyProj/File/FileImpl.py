@@ -41,23 +41,25 @@ class FileImpl(absFile):
     def parse_csv(fileNames):
         """
         """
+        data = []
         
-            file_data = pd.read_csv(fileName)
-            print("File Contain is")
-            print(file_data)
-            count_row = file_data.shape[0]
-            print(count_row)
-            for j in range(count_row-1):
-                print(file_data["Object Name"].iloc[j+1])
-                abc = str(file_data["Object Name"].iloc[j+1])
-                object = abc.split(",")
-                local_cell_Id = object[1].split("=")
-                cell_Id = local_cell_Id[1]
-                print("printing cell_Id",cell_Id)
-                file_data_row = file_data.iloc[j+1]
-                file_data_json = json.loads(file_data_row.to_json(orient='records'))
-                data[cell_Id] = file_data_json
+        file_data = pd.read_csv(fileName)
+        print("File Contain is")
+        print(file_data)
+        count_row = file_data.shape[0]
+        print(count_row)
+        for j in range(count_row-1):
+            print(file_data["Object Name"].iloc[j+1])
+            abc = str(file_data["Object Name"].iloc[j+1])
+            object = abc.split(",")
+            local_cell_Id = object[1].split("=")
+            cell_Id = local_cell_Id[1]
+            print("printing cell_Id",cell_Id)
+            file_data_row = file_data.iloc[j+1]
+            file_data_json = json.loads(file_data_row.to_json(orient='records'))
+            data[cell_Id] = file_data_json
                 
+        return data
                 
     def store_document(fileNames)
         """
