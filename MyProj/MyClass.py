@@ -1,7 +1,7 @@
+
 """
     main class to download file from the Remote Server using SFTP connection and
     read & parse to store the data into MongoDB
-
 """
 #from src.Files.files import Files
 
@@ -22,13 +22,12 @@ if __name__ == "__main__":
     localPath = "C:\\Users\\USER\\Desktop\\Assignment\\DestFile\\"
 
     filesObj = FileImpl(remotePath, localPath)
-    fileObj.connect_remote_server()
+    filesObj.connect_remote_server()
     filesObj.download()
     print "Download Successful"
 
     filenames = filesObj.read_all_filename()
     db = MongoDB(uri,"mydb")
     print " Connection to MongoDB successful"
-    filesObj.store_document(filenames)
+    fileObj.store_document(filenames)
     print " Data is successfully stored in DB"
-    
