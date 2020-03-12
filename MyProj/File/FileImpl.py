@@ -41,9 +41,8 @@ class FileImpl(absFile):
     def parse_csv(fileNames):
         """
         """
-        for i in range(len(fileNames)):
-            print("Reading fileName...", fileNames[i])
-            file_data = pd.read_csv(fileNames[i])
+        
+            file_data = pd.read_csv(fileName)
             print("File Contain is")
             print(file_data)
             count_row = file_data.shape[0]
@@ -58,13 +57,17 @@ class FileImpl(absFile):
                 file_data_row = file_data.iloc[j+1]
                 file_data_json = json.loads(file_data_row.to_json(orient='records'))
                 data[cell_Id] = file_data_json
-                print("storing data in mongodb",file_data_json)
-                #store the data into DB
-                db_cm.remove()
-                db_cm.insert(data)
-            count_row=0
-                # inserting the as a dictionary where key is cell_d  and value is row : into the mongoDB
-
+                
+                
     def store_document(fileNames)
         """
         """
+        for i in range(len(fileNames)):
+            print("Reading fileName...", fileNames[i])
+            data = parse_csv(fileNames[i]
+            
+            #db_cm.remove()
+            db_cm.update(data)
+            # inserting the as a dictionary where key is cell_d  and value is row : into the mongoDB
+
+
