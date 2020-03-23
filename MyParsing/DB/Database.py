@@ -14,5 +14,9 @@ class Database(object):
         pass
 
     @abc.abstractmethod
+    def get(self):
+        pass
+
+    @abc.abstractmethod
     def insert(self, *params):
         pass
